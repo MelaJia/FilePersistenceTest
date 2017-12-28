@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
         String inputText=load();
         if (!TextUtils.isEmpty(inputText)){
             edit.setText(inputText);
+            //setSelection将光标移动到文本末尾以便继续输入
             edit.setSelection(inputText.length());
             Toast.makeText(this,"这是您上次的输入！",Toast.LENGTH_SHORT).show();
         }
@@ -49,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
         FileOutputStream out = null;
         BufferedWriter writer = null;
         try {
+            //MODE_PRIVATE   私有，每次打开文件都会覆盖原来的内容
             out=openFileOutput("data", Context.MODE_PRIVATE);
             writer=new BufferedWriter(new OutputStreamWriter(out));
             writer.write(inputText);
@@ -71,6 +73,7 @@ public class MainActivity extends AppCompatActivity {
         BufferedReader reader = null;
         StringBuilder content=new StringBuilder();
         try {
+            //openFileInput("data")打开文件
             input=openFileInput("data");
             reader = new BufferedReader(new InputStreamReader(input));
             String line="";
